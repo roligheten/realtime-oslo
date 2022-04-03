@@ -32,6 +32,7 @@ const RUTER_VEHICLE_POS_QUERY = gql`
             lastUpdated
             vehicleId
             mode
+            direction
             line {
                 lineRef
             }
@@ -49,6 +50,7 @@ const RUTER_VEHICLE_POS_SUBSCRIPTION = gql`
             lastUpdated
             vehicleId
             mode
+            direction
             line {
                 lineRef
             }
@@ -63,6 +65,7 @@ const RUTER_VEHICLE_POS_SUBSCRIPTION = gql`
 export type VehicleResult = {
     lastUpdated: string;
     vehicleId: string;
+    direction: string;
     line: {
         lineRef: string;
     };
@@ -150,7 +153,10 @@ export const useVehicleSubscription = (client: EnturVehicleApiClient) => {
                 return {
                     vehicles: Object.values(
                         keyBy(
-                            [...prev.vehicles, ...data.vehicles],
+                            [
+                                ...(prev?.vehicles ?? []),
+                                ...(data?.vehicles ?? []),
+                            ],
                             ({ vehicleId }: VehicleResult) => vehicleId
                         )
                     ),

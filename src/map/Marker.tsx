@@ -65,6 +65,7 @@ const Marker: FunctionalComponent<MarkerProps> = ({
                 { lat, lng: long },
                 { title, icon }
             ) as ExtendedLeafletMarker;
+            title && marker.bindTooltip(title, { direction: "top" });
             map.addLayer(marker);
             setMarker(marker);
 
@@ -75,6 +76,11 @@ const Marker: FunctionalComponent<MarkerProps> = ({
     useEffect(() => {
         marker?.slideTo({ lat, lng: long }, { duration: 2000 });
     }, [lat, long]);
+
+    useEffect(() => {
+        marker?.unbindTooltip();
+        title && marker?.bindTooltip(title, { direction: "top" });
+    }, [title]);
 
     return <></>;
 };

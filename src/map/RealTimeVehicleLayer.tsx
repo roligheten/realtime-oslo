@@ -6,6 +6,12 @@ type RealTimeVehicleLayerProps = {
     vehicles: VehicleWithLine[];
 };
 
+const getMarkerTitle = (vehicle: VehicleWithLine) => {
+    return `Line: ${vehicle?.line?.publicCode} Direction: "${
+        vehicle?.direction === "1" ? "Forward" : "Backward"
+    }"`;
+};
+
 const RealTimeVehicleLayer: FunctionalComponent<RealTimeVehicleLayerProps> = ({
     vehicles,
 }) => {
@@ -15,7 +21,7 @@ const RealTimeVehicleLayer: FunctionalComponent<RealTimeVehicleLayerProps> = ({
                 <Marker
                     lat={vehicle.location.latitude}
                     long={vehicle.location.longitude}
-                    title={vehicle.mode}
+                    title={getMarkerTitle(vehicle)}
                     key={vehicle.vehicleId}
                     type={vehicle.mode}
                 />
