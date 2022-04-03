@@ -150,6 +150,9 @@ export const useVehicleSubscription = (client: EnturVehicleApiClient) => {
         const unsub = subscribeToMore({
             document: RUTER_VEHICLE_POS_SUBSCRIPTION,
             updateQuery: (prev, { subscriptionData: { data } }) => {
+                if ((data?.vehicles?.length ?? 0) === 0) {
+                    return prev;
+                }
                 return {
                     vehicles: Object.values(
                         keyBy(

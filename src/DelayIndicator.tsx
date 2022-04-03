@@ -18,7 +18,6 @@ type DelayIndicatorProps = {
 };
 
 const calculateMedianDelay = (vehicles: VehicleWithLine[]) => {
-    console.log("ra");
     if (vehicles.length === 0) {
         return 0;
     }
