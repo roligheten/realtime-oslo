@@ -48,7 +48,7 @@ const DelayIndicator: FunctionalComponent<DelayIndicatorProps> = ({
         return () => {
             clearInterval(interval);
         };
-    }, []);
+    }, [vehicles, setDelay]);
 
     let delayText;
     if (delay < 1) {
