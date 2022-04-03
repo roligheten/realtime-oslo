@@ -238,7 +238,7 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
     bottom: 0;
     background: white;
     padding: 7px;
-`,fg=e=>{var s;if(e.length===0)return 0;const t=Date.now(),n=(s=e.map(a=>(t-+new Date(a.lastUpdated))/1e3))==null?void 0:s.sort((a,c)=>a-c);var r=Math.floor(n.length/2);return n.length%2?n[r]:(n[r-1]+n[r])/2},dg=({vehicles:e})=>{const[t,n]=Ee(0);Xt(()=>{const s=setInterval(()=>n(fg(e)),1e3);return()=>{clearInterval(s)}},[]);let r;if(t<1)r=`${Math.round(t)}s`;else{const s=Math.floor(t/60);r=`${s}m${Math.floor(t)-s*60}s`}return bt(hg,{children:di(lg,{children:["Median time delay: ",r]})})},pg=Gt(jy)`
+`,fg=e=>{var s;if(e.length===0)return 0;const t=Date.now(),n=(s=e.map(a=>(t-+new Date(a.lastUpdated))/1e3))==null?void 0:s.sort((a,c)=>a-c);var r=Math.floor(n.length/2);return n.length%2?n[r]:(n[r-1]+n[r])/2},dg=({vehicles:e})=>{const[t,n]=Ee(0);Xt(()=>{const s=setInterval(()=>n(fg(e)),1e3);return()=>{clearInterval(s)}},[e,n]);let r;if(t<1)r=`${Math.round(t)}s`;else{const s=Math.floor(t/60);r=`${s}m${Math.floor(t)-s*60}s`}return bt(hg,{children:di(lg,{children:["Median time delay: ",r]})})},pg=Gt(jy)`
     flex: 1 1 auto;
 `,_g=Gt.div`
     display: flex;
