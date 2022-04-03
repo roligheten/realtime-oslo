@@ -238,14 +238,14 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
     bottom: 0;
     background: white;
     padding: 7px;
-`,fg=e=>{var s;if(e.length===0)return 0;const t=Date.now(),n=(s=e.map(a=>(t-+new Date(a.lastUpdated))/1e3))==null?void 0:s.sort((a,c)=>a-c);var r=Math.floor(n.length/2);return n.length%2?n[r]:(n[r-1]+n[r])/2},dg=({vehicles:e})=>{const[t,n]=Ee(0);Xt(()=>{const s=setInterval(()=>n(fg(e)),1e3);return()=>{clearInterval(s)}},[e,n]);let r;if(t<1)r=`${Math.round(t)}s`;else{const s=Math.floor(t/60);r=`${s}m${Math.floor(t)-s*60}s`}return bt(hg,{children:di(lg,{children:["Median time delay: ",r]})})},pg=Gt(jy)`
+`,fg=e=>{var s;if(e.length===0)return 0;const t=Date.now(),n=(s=e.map(a=>(t-+new Date(a.lastUpdated))/1e3))==null?void 0:s.sort((a,c)=>a-c);var r=Math.floor(n.length/2);return n.length%2?n[r]:(n[r-1]+n[r])/2},dg=({vehicles:e})=>{const[t,n]=Ee(0);Xt(()=>{const s=setInterval(()=>n(fg(e)),1e3);return()=>{clearInterval(s)}},[e,n]);let r;if(t<60)r=`${Math.round(t)}s`;else{const s=Math.floor(t/60);r=`${s}m${Math.floor(t)-s*60}s`}return bt(hg,{children:di(lg,{children:["Median time delay: ",r]})})},pg=Gt(jy)`
     flex: 1 1 auto;
 `,_g=Gt.div`
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100vh;
-`,mg=()=>{const[e,t]=Ee([]),n=tf(),r=rf(),{data:s}=Gh(n,r),a=Re(()=>e.length===0?s:s==null?void 0:s.filter(f=>e.includes(f.line.id)),[s,e]);return di(_g,{children:[bt(cg,{onLineToggled:f=>{e.includes(f)?t(e.filter(_=>f!==_)):t(e.concat([f]))},filteredLineIds:e}),di(pg,{lat:59.911491,lon:10.757933,zoom:15,children:[bt(Uy,{url:"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",attribution:'\xA9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),!!a&&bt(Hy,{vehicles:a})]}),!!a&&bt(dg,{vehicles:a})]})};Gt.div`
+`,mg=()=>{const[e,t]=Ee([]),n=tf(),r=rf(),{data:s}=Gh(n,r),a=Re(()=>e.length===0?s:s==null?void 0:s.filter(f=>{var _;return e.includes((_=f==null?void 0:f.line)==null?void 0:_.id)}),[s,e]);return di(_g,{children:[bt(cg,{onLineToggled:f=>{e.includes(f)?t(e.filter(_=>f!==_)):t(e.concat([f]))},filteredLineIds:e}),di(pg,{lat:59.911491,lon:10.757933,zoom:15,children:[bt(Uy,{url:"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",attribution:'\xA9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),!!a&&bt(Hy,{vehicles:a})]}),!!a&&bt(dg,{vehicles:a})]})};Gt.div`
     display: flex;
     flex-direction: column;
     width: 100%;
