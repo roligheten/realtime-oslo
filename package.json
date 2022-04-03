@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "tsc && vite build",
         "preview": "vite preview"
     },
@@ -12,6 +12,7 @@
         "graphql": "^16.3.0",
         "graphql-react": "^18.0.0",
         "leaflet": "^1.7.1",
+        "leaflet.locatecontrol": "^0.76.0",
         "leaflet.marker.slideto": "^0.3.0",
         "preact": "^10.5.15",
         "styled-components": "^5.3.5",
@@ -20,6 +21,7 @@
     "devDependencies": {
         "@preact/preset-vite": "^2.1.5",
         "@types/leaflet": "^1.7.9",
+        "@types/leaflet.locatecontrol": "^0.74.0",
         "@types/styled-components": "^5.1.24",
         "typescript": "^4.5.4",
         "vite": "^2.9.0"

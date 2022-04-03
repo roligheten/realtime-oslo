@@ -1,7 +1,8 @@
-import { FunctionalComponent, RefObject } from "preact";
+import { FunctionalComponent } from "preact";
 import { useState, useRef, useEffect } from "preact/hooks";
 import { Map as LeafletMap } from "leaflet";
 import { MapProvider } from "./MapContext";
+import LocateControl from "leaflet.locatecontrol";
 
 type MapProps = {
     className?: string;
@@ -25,14 +26,17 @@ const Map: FunctionalComponent<MapProps> = ({
             return;
         }
 
-        setMap(new LeafletMap(mapRef.current));
-
-        return () => map?.remove();
+        const map = new LeafletMap(mapRef.current);
+        setMap(map);
+        map.setView({ lat, lng: lon }, zoom);
+        // @ts-ignore Broken type defs
+        new LocateControl().addTo(map);
+        return () => map.remove();
     }, []);
 
     useEffect(() => {
         map?.setView({ lat, lng: lon }, zoom);
-    });
+    }, [zoom, lat, lon]);
 
     return (
         <MapProvider value={map}>

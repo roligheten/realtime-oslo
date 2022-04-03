@@ -1,24 +1,17 @@
-import { useContext } from "preact/hooks";
-import MapContext from "./MapContext";
 import { FunctionalComponent } from "preact";
-import { useVehicleQuery } from "../entur-vehicle/api";
-import { useEnturVehicleApiClient } from "../entur-vehicle/EnturVehicleApiProvider";
+import { VehicleWithLine } from "../entur/api";
 import Marker from "./Marker";
 
-type RealTimeVehicleLayerProps = {};
+type RealTimeVehicleLayerProps = {
+    vehicles: VehicleWithLine[];
+};
 
 const RealTimeVehicleLayer: FunctionalComponent<RealTimeVehicleLayerProps> = ({
-    children,
+    vehicles,
 }) => {
-    const map = useContext(MapContext);
-
-    const client = useEnturVehicleApiClient();
-
-    const { data } = useVehicleQuery(client);
-
     return (
         <>
-            {data?.vehicles?.map((vehicle) => (
+            {vehicles.map((vehicle) => (
                 <Marker
                     lat={vehicle.location.latitude}
                     long={vehicle.location.longitude}
