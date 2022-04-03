@@ -51,7 +51,7 @@ const DelayIndicator: FunctionalComponent<DelayIndicatorProps> = ({
     }, [vehicles, setDelay]);
 
     let delayText;
-    if (delay < 1) {
+    if (delay < 60) {
         delayText = `${Math.round(delay)}s`;
     } else {
         const mins = Math.floor(delay / 60);

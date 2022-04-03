@@ -36,7 +36,7 @@ const Controller = () => {
             return vehicles;
         }
         return vehicles?.filter((vehicle) =>
-            filteredLineIds.includes(vehicle.line.id)
+            filteredLineIds.includes(vehicle?.line?.id)
         );
     }, [vehicles, filteredLineIds]);
 
