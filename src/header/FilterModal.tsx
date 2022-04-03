@@ -82,7 +82,7 @@ const FilterModal: FunctionalComponent<FilterModalProps> = ({
                 }
                 return acc;
             }, {} as Record<string, LineResult>) ?? {}
-        );
+        ).sort((v1, v2) => v1.publicCode.localeCompare(v2.publicCode));
     }, [vehicles]);
 
     return (
