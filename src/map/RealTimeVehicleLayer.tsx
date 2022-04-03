@@ -8,7 +8,7 @@ type RealTimeVehicleLayerProps = {
 
 const getMarkerTitle = (vehicle: VehicleWithLine) => {
     return `Line: ${vehicle?.line?.publicCode} Direction: "${
-        vehicle?.direction === "1" ? "Forward" : "Backward"
+        vehicle?.direction === "2" ? "Forward" : "Backward"
     }"`;
 };
 
